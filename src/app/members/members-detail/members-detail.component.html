@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img [src]="member.imagePath" alt="{{member.name}}" class="img-responsive" *ngIf="member" width="100" height="100">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{member.name}}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>ID : {{member.reg}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>Age : {{member.age}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>Father Name : {{member.father}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>Mother Name : {{member.mother}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>Gender : {{member.ingender}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>Financial Status : {{member.memberFinance}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>Marital Status : {{member.memberMarital}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>Aadhar Number : {{member.aadhar}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>Phone Number : {{member.phone}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p>Negative marks :     {{member.description}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group" data-toggle="dropdown">
+      <button type="button" class="btn btn-primary">Manage Member <span class="caret"> </span></button>
+      <ul class="dropdown-menu">
+        <li><a style="cursor: pointer;" (click)="onEditMember()">Edit Member</a></li>
+        <li><a style="cursor: pointer;" (click)="onDeleteMember()">Delete Member</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Children</h3>
+    <li class="list-group-item" *ngFor="let children of member.children">
+      {{children.name}} - {{children.gender}} ({{children.childAge}})
+      <!--we get obj,obj for an array-->
+  </div>
+</div>

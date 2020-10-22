@@ -1,0 +1,23 @@
+.btn {
+  margin: 5px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+img {
+  margin: 5px;
+}
+
+.container {
+  margin-top: 30px;
+}
+
+select {
+  margin: 5px;
+}
+
+input {
+  margin:  5px;
+}

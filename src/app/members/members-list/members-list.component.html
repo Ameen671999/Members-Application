@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewMember()">New Member</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <hr>
+    <app-members-tab *ngFor="let memberEl of members; let i = index" [member]="memberEl" [index]="i"
+    ></app-members-tab>  <!--to pass we use index-->
+  </div>
+</div>
+

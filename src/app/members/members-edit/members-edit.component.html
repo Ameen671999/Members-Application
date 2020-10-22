@@ -1,0 +1,140 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!memberForm.valid">Save</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="reg">ID </label>
+          <input type="text" id="reg" formControlName="reg" class="form-control" value="{{uuidValue}}">
+          <button type="button" class="btn btn-info " (click)="generateUUID()">
+            Generate </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="name">Name</label>
+          <input type="text" id="name" formControlName="name" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="date">D.O.B</label>
+          <input type="date" [(ngModel)]="age" id="date" formControlName="date" class="form-control" />
+          <button type="button" class="btn btn-primary" (click)="ageCalculator()"> Calculate </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="age" *ngIf="age">Age </label>
+          <input type="number" *ngIf="age" [(ngModel)]="showAge" id="age" formControlName="age" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="father">Father Name</label>
+          <input type="text" id="father" formControlName="father" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="mother">Mother Name</label>
+          <input type="text" id="mother" formControlName="mother" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="ingender">Gender</label>
+          <div class="radio" *ngFor="let ingender of ingenders">
+            <label>
+              <input type="radio" formControlName="ingender" [value]="ingender">{{ ingender }}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <p><b>Financial Status</b></p>
+          <select class="selectpicker" (change)="changeFinance($event)" formControlName="memberFinance">
+            <option value="">Choose Poverty Line</option>
+            <option  *ngFor="let finance of Finance" [ngValue]="finance">{{finance}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <p><b>Marital Status</b></p>
+          <select class="select-picker" (change)="changeMarital($event)" formControlName="memberMarital">
+            <option value="">Current Status</option>
+            <option  *ngFor="let marital of Marital" [ngValue]="marital">{{marital}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="aadhar">Aadhar Number</label>
+          <input type="tel" id="aadhar" formControlName="aadhar" class="form-control" maxlength="14">
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-xs-12">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" formControlName="phone" class="form-control" maxlength="10">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="imagePath">Image URL</label>
+          <input type="text" id="imagePath" formControlName="imagePath" class="form-control" #ImagePath>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="ImagePath.value" class="img-responsive" width="100" height="100">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Negative Command</label>
+              <textarea type="text" id="description" formControlName="description" class="form-control"
+                rows="6"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="children">
+          <div class="row" *ngFor="let childrenCtrl of controls; let i = index" [formGroupName]="i"
+            style="margin-top: 10px;">
+            <div class="col-xs-5">
+              <input type="text" formControlName="name" class="form-control" placeholder="Name">
+            </div>
+            <div class="col-xs-1" *ngFor="let gender of genders">
+              <label>
+                <input type="radio" formControlName="gender" class="form-control" [value]="gender"> {{ gender }}
+              </label>
+            </div>
+            <div class="col-xs-2">
+              <input type="number" formControlName="childAge" placeholder="Age" class="form-control">
+            </div>
+            <div class="col-xs-2">
+              <button class="btn btn-danger" type="button" (click)="onDeleteChildren(i)">X</button>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="button" class="btn btn-success" (click)="onAddChildren()">Add Children</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
